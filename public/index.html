@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Highend Spa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Gowun+Batang:wght@400;700&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #141a2e;
+      --gold: #c9a962;
+      --gold-light: #d4b978;
+      --cream: #f8f6f3;
+      --white: #ffffff;
+      --mint: #8fb5a1;
+      --pink: #d4a5a5;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--navy);
+      background: var(--cream);
+      line-height: 1.6;
+    }
+
+    .serif {
+      font-family: 'Cormorant Garamond', 'Pretendard', sans-serif;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      padding-bottom: 8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero .wave-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .hero .wave-bottom svg {
+      display: block;
+      width: 100%;
+      height: 80px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('hero-bg.jpg') center/cover;
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .logo {
+      width: min(400px, 80vw);
+      margin-bottom: 2rem;
+    }
+
+    .hero-tagline {
+      color: var(--gold);
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      letter-spacing: 0.3em;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 3rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .cta-button:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    /* Section Common */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title h2 {
+      font-family: 'Cormorant Garamond', 'Pretendard', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title .subtitle {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+    }
+
+    /* Gold Frame Decoration */
+    .gold-frame {
+      position: relative;
+      display: inline-block;
+      padding: 0.5rem 2rem;
+    }
+
+    .gold-frame::before,
+    .gold-frame::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--gold);
+    }
+
+    .gold-frame::before {
+      top: 0;
+      left: 0;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .gold-frame::after {
+      bottom: 0;
+      right: 0;
+      border-left: none;
+      border-top: none;
+    }
+
+    /* Wave Divider */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      margin-top: -1px;
+      margin-bottom: -1px;
+    }
+
+    .wave-divider svg {
+      display: block;
+      width: 100%;
+      height: 80px;
+    }
+
+    .wave-divider.from-navy {
+      background: var(--navy);
+    }
+
+    .wave-divider.from-white {
+      background: var(--white);
+    }
+
+    .wave-divider.from-cream {
+      background: var(--cream);
+    }
+
+    /* Gold Corner Decoration for Cards */
+    .gold-corner {
+      position: relative;
+    }
+
+    .gold-corner::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 40px;
+      height: 40px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+
+    .gold-corner::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      right: -1px;
+      width: 40px;
+      height: 40px;
+      border-bottom: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+    }
+
+    /* Decorative Gold Line */
+    .gold-line-left {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .gold-line-left::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    /* Floating Gold Shapes */
+    .floating-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      border: 1px solid rgba(201, 169, 98, 0.3);
+      border-radius: 50%;
+    }
+
+    .shape-1 {
+      width: 100px;
+      height: 100px;
+      top: 10%;
+      left: 5%;
+    }
+
+    .shape-2 {
+      width: 60px;
+      height: 60px;
+      top: 60%;
+      right: 10%;
+    }
+
+    .shape-3 {
+      width: 150px;
+      height: 150px;
+      bottom: 10%;
+      left: 15%;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+
+    /* Services Section */
+    .services {
+      background: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .service-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .service-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(transparent, rgba(20, 26, 46, 0.9));
+      color: var(--white);
+    }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', 'Pretendard', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      font-weight: 300;
+    }
+
+    /* About Section */
+    .about {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about .section-title h2 {
+      color: var(--white);
+    }
+
+    .about p {
+      font-size: 1.1rem;
+      line-height: 2;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+
+    /* Gallery Section */
+    .gallery {
+      background: var(--cream);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Contact Section */
+    .contact {
+      background: var(--white);
+      text-align: center;
+    }
+
+    .contact-info {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-item {
+      margin-bottom: 2rem;
+    }
+
+    .contact-item h4 {
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-item p {
+      font-size: 1.1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    footer .logo {
+      width: 150px;
+      margin-bottom: 1.5rem;
+      mix-blend-mode: lighten;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      opacity: 0.6;
+    }
+
+    /* Stats Section */
+    .stats {
+      background: var(--navy);
+      padding: 4rem 2rem;
+    }
+
+    .stats-grid {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', 'Pretendard', sans-serif;
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      color: var(--white);
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-top: 0.5rem;
+    }
+
+    /* Benefits Section */
+    .benefits {
+      background: var(--cream);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(201, 169, 98, 0.2);
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .benefit-card h3 {
+      font-family: 'Cormorant Garamond', 'Pretendard', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--navy);
+    }
+
+    .benefit-card p {
+      font-size: 0.9rem;
+      color: #666;
+      font-weight: 300;
+    }
+
+    /* Price Section */
+    .price {
+      background: var(--white);
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .price-card {
+      border: 1px solid rgba(201, 169, 98, 0.3);
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .price-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .price-card h3 {
+      font-family: 'Cormorant Garamond', 'Pretendard', sans-serif;
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .price-card h3 small {
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    .price-card .duration {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+
+    .price-card .price-amount {
+      font-family: 'Cormorant Garamond', 'Pretendard', sans-serif;
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .price-card .description {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Aroma Section */
+    .aroma {
+      background: var(--navy);
+      color: var(--white);
+      position: relative;
+    }
+
+    .aroma::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('oil.png') center/cover;
+      opacity: 0.15;
+    }
+
+    .aroma > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .aroma .wave-top,
+    .aroma .wave-bottom {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+      z-index: 2;
+    }
+
+    .aroma .wave-top {
+      top: 0;
+    }
+
+    .aroma .wave-bottom {
+      bottom: 0;
+    }
+
+    .aroma .wave-top svg,
+    .aroma .wave-bottom svg {
+      display: block;
+      width: 100%;
+      height: 80px;
+    }
+
+    .aroma .section-title h2 {
+      color: var(--white);
+    }
+
+    .aroma-grid {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .aroma-item {
+      text-align: center;
+      width: 120px;
+    }
+
+    .aroma-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: rgba(201, 169, 98, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 2rem;
+    }
+
+    .aroma-item h4 {
+      font-family: 'Cormorant Garamond', 'Pretendard', sans-serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    .aroma-item p {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.3rem;
+    }
+
+    /* Reviews Section */
+    .reviews {
+      background: var(--cream);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      background: var(--white);
+      padding: 2rem;
+      border-left: 3px solid var(--gold);
+    }
+
+    .review-stars {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .review-author {
+      font-size: 0.85rem;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .review-date {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    /* Floating Button */
+    .floating-btn {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background: #fee500;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+    }
+
+    .floating-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-btn svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      section {
+        padding: 4rem 1.5rem;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="logo.png" alt="The Highend Spa" class="logo">
+      <p class="hero-tagline">PREMIUM RELAXATION EXPERIENCE</p>
+      <a href="http://pf.kakao.com/_HsMhX/chat" target="_blank" class="cta-button" style="background: var(--gold); color: var(--navy); font-weight: 500;">예약하고 최대 40% 할인 받기</a>
+    </div>
+    <div class="wave-bottom">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M0,80 C300,20 600,60 900,30 C1050,10 1150,40 1200,20 L1200,80 L0,80 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services">
+    <div class="section-title">
+      <p class="subtitle">OUR SERVICES</p>
+      <h2 class="serif">Premium Treatments</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="service-special.jpg" alt="Highend Special">
+        <div class="service-card-overlay">
+          <h3>Highend Special</h3>
+          <p>허브찜질 + 타이거밤 + 아로마의 극상 힐링 마사지</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="service-foot.jpg" alt="Foot Massage">
+        <div class="service-card-overlay">
+          <h3>Foot Massage</h3>
+          <p>다리와 발 집중 케어, 말초신경 자극 효과</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="service-lounge.jpg" alt="VIP Lounge">
+        <div class="service-card-overlay">
+          <h3>VIP Lounge</h3>
+          <p>바다 전망과 함께 특별한 휴식 공간을 제공합니다</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wave Divider (White to Navy) -->
+  <div class="wave-divider from-white">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,0 C200,50 400,10 600,40 C800,70 1000,20 1200,50 L1200,80 L0,80 Z" fill="#141a2e"/>
+    </svg>
+  </div>
+
+  <!-- About -->
+  <section class="about" style="position: relative;">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+    </div>
+    <div class="section-title">
+      <p class="subtitle">ABOUT US</p>
+      <h2 class="serif gold-frame">The Art of Relaxation</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="about-content">
+      <p>
+        The Highend Spa는 최고급 시설과 전문 테라피스트가 선사하는<br>
+        프리미엄 스파 경험을 제공합니다.<br><br>
+        아름다운 바다 전망과 함께 일상의 피로를 잊고<br>
+        진정한 휴식을 만끽하세요.
+      </p>
+    </div>
+  </section>
+
+  <!-- Wave Divider (Navy to Cream) -->
+  <div class="wave-divider from-navy">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,80 C300,20 700,60 1000,30 C1100,20 1150,40 1200,30 L1200,80 L0,80 Z" fill="#f8f6f3"/>
+    </svg>
+  </div>
+
+  <!-- Benefits -->
+  <section class="benefits">
+    <div class="section-title">
+      <p class="subtitle">SPECIAL BENEFITS</p>
+      <h2 class="serif gold-frame">최대 40% 할인</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🎉</div>
+        <h3>오픈기념 30% 할인</h3>
+        <p>오픈 기념 전 메뉴 30% 할인</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⭐</div>
+        <h3>구글리뷰 10% 추가할인</h3>
+        <p>구글 리뷰 작성 시 추가 할인</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">☀️</div>
+        <h3>해피아워 10% 추가할인</h3>
+        <p>오전 10시~12시 방문 시 추가 할인</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🔄</div>
+        <h3>재방문 10% 추가할인</h3>
+        <p>재방문 고객 추가 할인 혜택</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🚗</div>
+        <h3>2인 이상 공항 샌딩 무료</h3>
+        <p>하이엔드 스페셜 마사지 2인 이상 시 공항/깜란 샌딩 무료</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">👥</div>
+        <h3>5인 이상 1명 무료</h3>
+        <p>5인 이상 방문 시 1명 마사지 무료<br><small style="color:#888;">* 무료 픽업/샌딩 미제공</small></p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Wave Divider (Cream to White) -->
+  <div class="wave-divider from-cream">
+    <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+      <path d="M0,80 C400,20 800,60 1200,30 L1200,80 L0,80 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+
+  <!-- Price -->
+  <section class="price">
+    <div class="section-title">
+      <p class="subtitle">PRICE MENU</p>
+      <h2 class="serif gold-frame">마사지 가격표</h2>
+      <div class="divider"></div>
+      <p style="display: inline-block; background: var(--gold); color: var(--navy); font-size: 1.1rem; font-weight: 600; padding: 0.8rem 2rem; margin-top: 1.5rem; border-radius: 30px;">40% 할인 적용가 기준</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card gold-corner">
+        <h3>하이엔드 스페셜<br><small style="font-weight:300; font-size:0.7em;">Highend Special</small></h3>
+        <p class="description" style="margin-bottom:1rem;">허브찜질 + 타이거밤 + 아로마의 극상 힐링</p>
+        <p class="duration">90분 <strong>$19 / 480,000 VND</strong><br>120분 <strong>$21 / 540,000 VND</strong></p>
+        <p style="color:var(--gold); font-size:0.8rem; margin-top:0.5rem;">★ 2인 이상 시 공항 샌딩 무료</p>
+      </div>
+      <div class="price-card gold-corner">
+        <h3>아로마 전신<br><small style="font-weight:300; font-size:0.7em;">Aroma Body</small></h3>
+        <p class="description" style="margin-bottom:1rem;">베트남 전통 방식의 부드러운 전신 오일 마사지</p>
+        <p class="duration">60분 <strong>$13 / 330,000 VND</strong><br>90분 <strong>$15 / 390,000 VND</strong><br>120분 <strong>$18 / 450,000 VND</strong></p>
+      </div>
+      <div class="price-card gold-corner">
+        <h3>아로마 풋<br><small style="font-weight:300; font-size:0.7em;">Aroma Foot</small></h3>
+        <p class="description" style="margin-bottom:1rem;">다리와 발 집중 케어, 말초신경 자극 효과</p>
+        <p class="duration">60분 <strong>$8 / 200,000 VND</strong><br>90분 <strong>$10 / 250,000 VND</strong></p>
+      </div>
+      <div class="price-card gold-corner">
+        <h3>아로마 핫스톤<br><small style="font-weight:300; font-size:0.7em;">Aroma Hotstone</small></h3>
+        <p class="description" style="margin-bottom:1rem;">베트남 천연 스톤의 따뜻한 온기로 깊은 이완</p>
+        <p class="duration">90분 <strong>$16.5 / 420,000 VND</strong><br>120분 <strong>$19 / 480,000 VND</strong></p>
+      </div>
+      <div class="price-card gold-corner">
+        <h3>썬번 케어<br><small style="font-weight:300; font-size:0.7em;">Sunburn Care</small></h3>
+        <p class="description" style="margin-bottom:1rem;">알로에 성분으로 자외선 손상 피부 진정</p>
+        <p class="duration">60분 <strong>$14 / 360,000 VND</strong><br>90분 <strong>$16.5 / 420,000 VND</strong><br>120분 <strong>$19 / 480,000 VND</strong></p>
+      </div>
+      <div class="price-card gold-corner">
+        <h3>태국 건식<br><small style="font-weight:300; font-size:0.7em;">Thai Dry</small></h3>
+        <p class="description" style="margin-bottom:1rem;">오일 없이 손으로만 시원하게 풀어주는 전통 건식 마사지</p>
+        <p class="duration">60분 <strong>$14 / 360,000 VND</strong><br>90분 <strong>$16.5 / 420,000 VND</strong><br>120분 <strong>$19 / 480,000 VND</strong></p>
+      </div>
+      <div class="price-card gold-corner">
+        <h3>태교 마사지<br><small style="font-weight:300; font-size:0.7em;">Prenatal</small></h3>
+        <p class="description" style="margin-bottom:1rem;">임산부를 위한 편안한 마사지, 어깨와 허리 집중 케어</p>
+        <p class="duration">60분 <strong>$13 / 330,000 VND</strong><br>90분 <strong>$15 / 390,000 VND</strong><br>120분 <strong>$18 / 450,000 VND</strong></p>
+      </div>
+      <div class="price-card gold-corner">
+        <h3>키즈 마사지<br><small style="font-weight:300; font-size:0.7em;">Kids Massage</small></h3>
+        <p class="description" style="margin-bottom:1rem;">만 3~10세 어린이 성장 발달 마사지</p>
+        <p class="duration">60분 <strong>$10 / 270,000 VND</strong><br>90분 <strong>$13 / 330,000 VND</strong><br>120분 <strong>$15 / 390,000 VND</strong></p>
+      </div>
+      <div class="price-card gold-corner">
+        <h3>추가 서비스<br><small style="font-weight:300; font-size:0.7em;">Add-on</small></h3>
+        <p class="description" style="margin-bottom:1rem;">마사지와 함께 추가 가능</p>
+        <p class="duration">샴푸 <strong>$6 / 150,000 VND</strong><br>발각질 제거 <strong>$12 / 300,000 VND</strong></p>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 3rem; font-size: 1.5rem; font-weight: 500; color: var(--gold);">✨ 하이엔드 스파는 의무 팁이 없습니다 ✨</p>
+  </section>
+
+  <!-- Aroma -->
+  <section class="aroma" style="position: relative; padding-top: 8rem; padding-bottom: 8rem;">
+    <div class="wave-top">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M0,80 C200,30 500,70 700,40 C900,10 1100,50 1200,30 L1200,0 L0,0 Z" fill="#ffffff"/>
+      </svg>
+    </div>
+    <div class="floating-shapes">
+      <div class="shape shape-2" style="top: 20%; left: 8%;"></div>
+      <div class="shape shape-1" style="bottom: 15%; right: 5%;"></div>
+    </div>
+    <div class="section-title">
+      <p class="subtitle">AROMA OIL</p>
+      <h2 class="serif gold-frame">오일 선택</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="aroma-grid">
+      <div class="aroma-item">
+        <h4>라벤더</h4>
+        <p>편안한 수면</p>
+      </div>
+      <div class="aroma-item">
+        <h4>레몬그라스</h4>
+        <p>에너지 충전</p>
+      </div>
+      <div class="aroma-item">
+        <h4>일랑일랑</h4>
+        <p>긴장 완화</p>
+      </div>
+      <div class="aroma-item">
+        <h4>자스민</h4>
+        <p>스트레스 해소</p>
+      </div>
+    </div>
+    <div class="wave-bottom">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M0,0 C300,60 700,30 1000,50 C1100,60 1150,40 1200,55 L1200,80 L0,80 Z" fill="#f8f6f3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="section-title">
+      <p class="subtitle">GALLERY</p>
+      <h2 class="serif">Our Space</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="gallery-01.jpg" alt="Gallery 1">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-02.jpg" alt="Gallery 2">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-03.jpg" alt="Gallery 3">
+      </div>
+      <div class="gallery-item">
+        <img src="hero-bg.jpg" alt="Gallery 4">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-04.jpg" alt="Gallery 5">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-05.jpg" alt="Gallery 7">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-06.jpg" alt="Gallery 8">
+      </div>
+      <div class="gallery-item">
+        <img src="service-special.jpg" alt="Gallery 9">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-07.jpg" alt="Gallery 10">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-08.jpg" alt="Gallery 11">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-09.jpg" alt="Gallery 12">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-10.jpg" alt="Gallery 13">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-11.jpg" alt="Gallery 14">
+      </div>
+      <div class="gallery-item">
+        <img src="gallery-12.jpg" alt="Gallery 15">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section-title">
+      <p class="subtitle">CONTACT</p>
+      <h2 class="serif">Visit Us</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-info">
+      <div class="contact-item">
+        <h4>ADDRESS</h4>
+        <p>4 Tôn Đản, Lộc Thọ, Nha Trang<br>Khánh Hòa Province, Vietnam 650000<br><strong>4F (4층)</strong></p>
+      </div>
+      <div class="contact-item">
+        <h4>HOURS</h4>
+        <p>AM 10:00 - PM 10:00 (Daily)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating KakaoTalk Button -->
+  <a href="http://pf.kakao.com/_HsMhX/chat" target="_blank" class="floating-btn" aria-label="카카오톡 상담">
+    <svg viewBox="0 0 24 24" fill="#3C1E1E">
+      <path d="M12 3C6.477 3 2 6.463 2 10.692c0 2.645 1.758 4.982 4.414 6.331-.136.477-.878 3.068-.911 3.281 0 0-.018.188.099.26.116.073.253.035.253.035.333-.047 3.862-2.528 4.47-2.956.554.08 1.122.122 1.675.122 5.523 0 10-3.463 10-7.692S17.523 3 12 3z"/>
+    </svg>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <img src="logo.png" alt="The Highend Spa" class="logo">
+    <p>하이엔드 스파 © 레인정보통신 | 대표자: 김효철 | 사업자등록번호: 804-11-01111</p>
+  </footer>
+
+</body>
+</html>
